@@ -7,7 +7,7 @@ const start = async() => {
   await connectDB();
   
   app.listen(3001, ()=>{
-    console.log('Server is up');
+    console.log('Server is up, 3001');
   })
 }
 
