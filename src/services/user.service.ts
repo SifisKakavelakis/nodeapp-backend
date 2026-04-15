@@ -7,6 +7,13 @@ import * as userDAO from '../dao/user.dao';
 
 export const SALT_ROUNDS = parseInt(process.env.SALT_ROUNDS || '10');
 
+export const findUserByEmail = async(email:string) => {
+  const user = await userDAO.findByEmail(email);
+  if (user) {
+    return user
+  }
+}
+
 export const createUser = async(payload:CreateUserDTO) => {
   if  (payload.password){
     const hash = await bcrypt.hash(payload.password, SALT_ROUNDS);
