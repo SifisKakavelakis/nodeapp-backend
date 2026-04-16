@@ -27,7 +27,7 @@ export const authenticate = (req: Request, res: Response, next: NextFunction) =>
     const payload = jwt.verify(token, JWT_SECRET);
      // console.log(payload);
     req.user = payload;
-    console.log("REQ USER>>>", req.user);
+    // console.log("REQ USER>>>", req.user);
     next()
   } catch (err) {
     res.status(401).json({message: "Invalid or expired token"});
