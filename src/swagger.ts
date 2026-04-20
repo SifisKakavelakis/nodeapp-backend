@@ -15,7 +15,7 @@ const options: swaggerJSDoc.Options = {
     },
     servers: [
       {
-        url: "http://localhost:3000/api",
+        url: "http://localhost:3001/api",
         description: "Local Server"
       },
       {
@@ -24,11 +24,19 @@ const options: swaggerJSDoc.Options = {
       }
     ],
     components: {
+         securitySchemes:{
+        bearerAuth: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "JWT"
+        }
+      },
       "schemas":{
         User: mongooseToSwagger(User),
         Role: mongooseToSwagger(Role)
       }
-    }
+    },
+    security:[{bearerAuth:[]}]
   },
   apis: ["./src/routes/*.ts"]
 };
